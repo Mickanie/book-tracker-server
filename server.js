@@ -32,6 +32,14 @@ router.post("/add-book", async (req, res) => {
   res.json(db);
 });
 
+//delete a book
+router.delete("/delete-book", async (req, res) => {
+  const { ISBN } = req.body;
+  index = db.findIndex(x => x.ISBN === ISBN);
+  db.splice(index, 1);
+  res.json(db);
+});
+
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Server started on port ${process.env.PORT}`);
 });
