@@ -41,7 +41,7 @@ router.delete("/delete-book", async (req, res) => {
 });
 
 //delete a book
-router.put("/delete-book", async (req, res) => {
+router.put("/edit-book", async (req, res) => {
   const { title, author, ISBN, pages, rating } = req.body;
   index = db.findIndex(x => x.ISBN === ISBN);
   const modifiedBook = {
