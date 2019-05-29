@@ -40,6 +40,21 @@ router.delete("/delete-book", async (req, res) => {
   res.json(db);
 });
 
+//delete a book
+router.put("/delete-book", async (req, res) => {
+  const { title, author, ISBN, pages, rating } = req.body;
+  index = db.findIndex(x => x.ISBN === ISBN);
+  const modifiedBook = {
+    title,
+    author,
+    ISBN,
+    pages,
+    rating
+  };
+  db[index] = modifiedBook;
+  res.json(db);
+});
+
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Server started on port ${process.env.PORT}`);
 });
